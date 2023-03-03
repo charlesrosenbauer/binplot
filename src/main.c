@@ -4,6 +4,7 @@
 
 #include "SDL2/SDL.h"
 
+#include "plot.h"
 #include "util.h"
 
 
@@ -39,6 +40,8 @@ int main(int ac, char** av){
 		filect = ac-1;
 	}
 	
+	
+	plotBigram((Img){screen->pixels, 900, 1600}, (File){files[0], sizes[0]});
 
 	int cont = 1;
 	while(cont){
