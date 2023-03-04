@@ -39,7 +39,7 @@ void plotBigram(Img img, File file){
 	for(int i = 1; i < file.size; i++){
 		uint8_t b = file.bytes[i];
 		int n = (a * img.w) + b;
-		img.pix[n] = 0x7f7f7f;
+		img.pix[n] = 0xffffff;
 		
 		a = b;
 	}
@@ -63,6 +63,40 @@ void plotHilbert(Img img, File file, int scroll){
 		hilbert(256, (y*256)+x, &x, &y);
 		int n = (y * img.w) + x;
 		img.pix[n] = (i+scroll < file.size)? ((uint32_t)file.bytes[i+scroll]) * 0x010101 : 0;
+	}
+}
+
+
+
+ColorMap popColor(File file){
+	ColorMap ret;
+	ret.pix   = malloc(sizeof(uint32_t) * file.size);
+	ret.size  = file.size;
+	for(int i = 0; i < file.size; i++) ret.pix[i] = (__builtin_popcount(file.bytes[i]) << 13) | file.bytes[i];
+	return ret;
+}
+
+
+
+
+
+void colorZigzag(Img img, ColorMap map, int scroll){
+	for(int i = 0; i < 65536; i++){
+		int x = i % 256;
+		int y = i / 256;
+		int n = (y * img.w) + x;
+		img.pix[n] = (i+scroll < map.size)? map.pix[i+scroll] : 0;
+	}
+}
+
+
+void colorHilbert(Img img, ColorMap map, int scroll){
+	for(int i = 0; i < 65536; i++){
+		int x = i % 256;
+		int y = i / 256;
+		hilbert(256, (y*256)+x, &x, &y);
+		int n = (y * img.w) + x;
+		img.pix[n] = (i+scroll < map.size)? map.pix[i+scroll] : 0;
 	}
 }
 

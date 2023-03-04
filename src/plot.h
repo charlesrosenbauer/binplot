@@ -32,10 +32,22 @@ typedef struct{
 	uint64_t	size;
 }File;
 
+typedef struct{
+	uint32_t*	pix;
+	uint64_t	size;
+}ColorMap;
+
 
 void plotBigram		(Img, File);
 void plotZigzag		(Img, File, int);
 void plotHilbert	(Img, File, int);
+
+
+ColorMap	popColor(File);
+
+
+void colorZigzag	(Img, ColorMap, int);
+void colorHilbert	(Img, ColorMap, int);
 
 
 
