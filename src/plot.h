@@ -33,8 +33,9 @@ typedef struct{
 }File;
 
 
-void plotBigram(Img, File);
-void plotZigzag(Img, File, int);
+void plotBigram		(Img, File);
+void plotZigzag		(Img, File, int);
+void plotHilbert	(Img, File, int);
 
 
 

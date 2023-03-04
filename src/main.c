@@ -41,7 +41,7 @@ int main(int ac, char** av){
 	}
 	
 	
-	plotZigzag((Img){screen->pixels, 900, 1600}, (File){files[0], sizes[0]}, 0);
+	plotHilbert((Img){screen->pixels, 900, 1600}, (File){files[0], sizes[0]}, 0);
 
 	int cont = 1;
 	while(cont){
