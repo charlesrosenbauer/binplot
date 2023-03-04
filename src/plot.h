@@ -34,6 +34,7 @@ typedef struct{
 
 
 void plotBigram(Img, File);
+void plotZigzag(Img, File, int);
 
 
 

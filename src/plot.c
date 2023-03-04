@@ -16,3 +16,13 @@ void plotBigram(Img img, File file){
 		a = b;
 	}
 }
+
+
+void plotZigzag(Img img, File file, int scroll){
+	for(int i = 0; i < 65536; i++){
+		int x = i % 256;
+		int y = i / 256;
+		int n = (y * img.w) + x;
+		img.pix[n] = (i+scroll < file.size)? ((uint32_t)file.bytes[i+scroll]) * 0x010101 : 0;
+	}
+}
