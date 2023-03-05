@@ -4,6 +4,8 @@
 
 #include "plot.h"
 #include "space.h"
+#include "util.h"
+
 
 
 B256	embedBytes	(uint8_t* bs, int size){
@@ -45,4 +47,16 @@ int		embedXorDist(B256 a, B256 b){
 	int ret = 0;
 	for(int i = 0; i < 4; i++) ret += __builtin_popcountl(a.bits[i] ^ b.bits[i]);
 	return ret;
+}
+
+
+
+
+void	printEmbedding	(B256 b){
+	printf("================================================================\n");
+	for(int i = 0; i < 4; i++){
+		for(int j = 0; j < 64; j++)
+			printf("%c", (b.bits[i] & (1l << j))? 'O' : ' ');
+		printf("|\n");
+	}
 }

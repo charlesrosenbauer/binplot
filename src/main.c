@@ -4,6 +4,7 @@
 
 #include "SDL2/SDL.h"
 
+#include "space.h"
 #include "plot.h"
 #include "util.h"
 
@@ -39,6 +40,13 @@ int main(int ac, char** av){
 		}
 		filect = ac-1;
 	}
+	
+	for(int  i = 0; i < sizes[0]; i += 32){
+		int  s = ((i+32) < sizes[0])? 32 : sizes[0]-i;
+		B256 b = embedBytes(&files[0][i], s);
+		printEmbedding(b);	
+	}
+	
 	
 	ColorMap cmap = popColor((File){files[0], sizes[0]});
 	colorHilbert((Img){screen->pixels, 900, 1600}, cmap, 0);
