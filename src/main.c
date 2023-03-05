@@ -43,7 +43,7 @@ int main(int ac, char** av){
 	
 	for(int  i = 0; i < sizes[0]; i += 32){
 		int  s = ((i+32) < sizes[0])? 32 : sizes[0]-i;
-		B256 b = embedBytes(&files[0][i], s);
+		B256 b = embedBigram(&files[0][i], s);
 		printEmbedding(b);	
 	}
 	

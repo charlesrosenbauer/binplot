@@ -51,6 +51,39 @@ int		embedXorDist(B256 a, B256 b){
 
 
 
+EmbedTable	embedKMeans(EmbedTable data, int k){
+	EmbedTable ret;
+	ret.embeds	= malloc(sizeof(B256) * k);
+	ret.size	= k;
+	for(int i = 0; i < k; i++){
+		// TODO: figure out how to efficiently average bitvectors
+	}
+	return ret;
+}
+
+
+
+int rateKMeans(EmbedTable means, EmbedTable data){
+	int score = 0;
+	for(int i = 0; i < data.size; i++){
+		int d = embedXorDist(means.embeds[0], data.embeds[i]);
+		int m = 0;
+		for(int j = 1; j < means.size; i++){
+			int dist = embedXorDist(means.embeds[j], data.embeds[i]);
+			if(dist < d){
+				d = dist;
+				m = j;
+			}
+		}
+		score += d;
+	}
+	return score;
+}
+
+
+
+
+
 
 void	printEmbedding	(B256 b){
 	printf("================================================================\n");
