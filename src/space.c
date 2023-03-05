@@ -32,3 +32,17 @@ B256	embedBigram	(uint8_t* bs, int size){
 	return ret;
 }
 
+
+
+int		embedDotDist(B256 a, B256 b){
+	int ret = 0;
+	for(int i = 0; i < 4; i++) ret += __builtin_popcountl(a.bits[i] & b.bits[i]);
+	return ret;
+}
+
+
+int		embedXorDist(B256 a, B256 b){
+	int ret = 0;
+	for(int i = 0; i < 4; i++) ret += __builtin_popcountl(a.bits[i] ^ b.bits[i]);
+	return ret;
+}

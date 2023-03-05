@@ -9,7 +9,8 @@
 
 /*
 	TODO:
-	* data embeddings
+	x data embeddings
+	x embedding distances
 	* k-means categorization
 */
 
@@ -20,6 +21,10 @@ typedef struct{
 
 B256	embedBytes	(uint8_t*, int);
 B256	embedBigram	(uint8_t*, int);
+
+
+int		embedDotDist(B256, B256);
+int		embedXorDist(B256, B256);
 
 
 
