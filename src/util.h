@@ -50,6 +50,9 @@ int		matchLSH	(LSH256, LSH256);
 
 uint64_t	rng			();
 uint64_t	rngseed		(uint64_t, uint64_t);
+
+uint64_t	sparseRng	(int);
+
 int			loadFile	(char*, char**, int64_t*);
 int			dumpFile	(char*, char*, int64_t);
 uint64_t	hashString 	(char*);

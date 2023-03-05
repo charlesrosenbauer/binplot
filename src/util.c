@@ -134,6 +134,12 @@ uint64_t rngseed(uint64_t a, uint64_t b){
 	return x + rng();
 }
 
+uint64_t sparseRng(int sparsity){
+	uint64_t ret = rng();
+	for(int i = 0; i < sparsity; i++) ret &= rng();
+	return ret;
+}
+
 
 
 int loadFile(char* fname, char** buffer, int64_t* fsize){
