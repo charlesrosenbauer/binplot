@@ -38,6 +38,12 @@ typedef struct{
 }ColorMap;
 
 
+typedef struct{
+	uint32_t*	colors;
+	int			colorct;
+}Palette;
+
+
 void plotBigram		(Img, File);
 void plotZigzag		(Img, File, int);
 void plotHilbert	(Img, File, int);
