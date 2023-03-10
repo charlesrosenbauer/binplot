@@ -46,22 +46,22 @@ void plotBigram(Img img, File file){
 }
 
 
-void plotZigzag(Img img, File file, int scroll){
-	for(int i = 0; i < 65536; i++){
-		int x = i % 256;
-		int y = i / 256;
-		int n = (y * img.w) + x;
+void plotZigzag(Img img, File file, int scroll, int px, int py){
+	for(int i = 0; i < 262144; i++){
+		int x = i % 512;
+		int y = i / 512;
+		int n = ((py + y) * img.w) + px + x;
 		img.pix[n] = (i+scroll < file.size)? ((uint32_t)file.bytes[i+scroll]) * 0x010101 : 0;
 	}
 }
 
 
-void plotHilbert(Img img, File file, int scroll){
-	for(int i = 0; i < 65536; i++){
-		int x = i % 256;
-		int y = i / 256;
-		hilbert(256, (y*256)+x, &x, &y);
-		int n = (y * img.w) + x;
+void plotHilbert(Img img, File file, int scroll, int px, int py){
+	for(int i = 0; i < 262144; i++){
+		int x = i % 512;
+		int y = i / 512;
+		hilbert(512, (y*512)+x, &x, &y);
+		int n = ((py + y) * img.w) + px + x;
 		img.pix[n] = (i+scroll < file.size)? ((uint32_t)file.bytes[i+scroll]) * 0x010101 : 0;
 	}
 }
@@ -80,22 +80,22 @@ ColorMap popColor(File file){
 
 
 
-void colorZigzag(Img img, ColorMap map, int scroll){
-	for(int i = 0; i < 65536; i++){
-		int x = i % 256;
-		int y = i / 256;
-		int n = (y * img.w) + x;
+void colorZigzag(Img img, ColorMap map, int scroll, int px, int py){
+	for(int i = 0; i < 262144; i++){
+		int x = i % 512;
+		int y = i / 512;
+		int n = ((py + y) * img.w) + px + x;
 		img.pix[n] = (i+scroll < map.size)? map.pix[i+scroll] : 0;
 	}
 }
 
 
-void colorHilbert(Img img, ColorMap map, int scroll){
-	for(int i = 0; i < 65536; i++){
-		int x = i % 256;
-		int y = i / 256;
-		hilbert(256, (y*256)+x, &x, &y);
-		int n = (y * img.w) + x;
+void colorHilbert(Img img, ColorMap map, int scroll, int px, int py){
+	for(int i = 0; i < 262144; i++){
+		int x = i % 512;
+		int y = i / 512;
+		hilbert(512, (y*512)+x, &x, &y);
+		int n = ((py + y) * img.w) + px + x;
 		img.pix[n] = (i+scroll < map.size)? map.pix[i+scroll] : 0;
 	}
 }

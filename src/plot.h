@@ -45,15 +45,15 @@ typedef struct{
 
 
 void plotBigram		(Img, File);
-void plotZigzag		(Img, File, int);
-void plotHilbert	(Img, File, int);
+void plotZigzag		(Img, File, int, int, int);
+void plotHilbert	(Img, File, int, int, int);
 
 
 ColorMap	popColor(File);
 
 
-void colorZigzag	(Img, ColorMap, int);
-void colorHilbert	(Img, ColorMap, int);
+void colorZigzag	(Img, ColorMap, int, int, int);
+void colorHilbert	(Img, ColorMap, int, int, int);
 
 
 

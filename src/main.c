@@ -47,9 +47,12 @@ int main(int ac, char** av){
 		printEmbedding(b);	
 	}
 	
-	
+	uint32_t* pix = screen->pixels;
+	for(int i = 0; i < (1600 * 900); i++) pix[i] = 0x3f3f3f;
 	ColorMap cmap = popColor((File){files[0], sizes[0]});
-	colorHilbert((Img){screen->pixels, 900, 1600}, cmap, 0);
+	colorHilbert((Img){screen->pixels, 900, 1600}, cmap, 0,   8,   8);
+	colorZigzag ((Img){screen->pixels, 900, 1600}, cmap, 0, 532,   8);
+
 
 	int cont = 1;
 	while(cont){
